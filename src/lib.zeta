@@ -1,0 +1,13 @@
+// Auto-converted from /tmp/df-thiserror-2.0.18/thiserror-2.0.18/src/lib.rs
+
+#[cfg(all(thiserror_nightly_testing, not(error_generic_member_access)))] compile_error!("Build script probe failed to compile.");
+// [unsupported item]
+// [unsupported item]
+mod aserror;
+mod display;
+#[cfg(error_generic_member_access)]
+mod provide;
+mod var;
+pub use thiserror_impl::*;
+mod private;
+include!(concat!(env!("OUT_DIR"), "/private.rs"));

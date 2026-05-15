@@ -1,0 +1,61 @@
+// Auto-converted from /tmp/df-thiserror-2.0.18/thiserror-2.0.18/src/aserror.rs
+
+use core::error::Error;
+use core::panic::UnwindSafe;
+pub trait AsDynError<a> {
+ fn as_dyn_error(&self) -> &(_)
+}
+
+impl<a, T: Error + a> AsDynError<a> for T {
+ fn as_dyn_error(&self) -> &(_) {
+ self
+ }
+ 
+}
+
+impl<a> AsDynError<a> for _ {
+ fn as_dyn_error(&self) -> &(_) {
+ self
+ }
+ 
+}
+
+impl<a> AsDynError<a> for _ {
+ fn as_dyn_error(&self) -> &(_) {
+ self
+ }
+ 
+}
+
+impl<a> AsDynError<a> for _ {
+ fn as_dyn_error(&self) -> &(_) {
+ self
+ }
+ 
+}
+
+impl<a> AsDynError<a> for _ {
+ fn as_dyn_error(&self) -> &(_) {
+ self
+ }
+ 
+}
+
+pub trait Sealed {
+}
+
+impl<T: Error> Sealed for T {
+}
+
+impl Sealed for _ {
+}
+
+impl Sealed for _ {
+}
+
+impl Sealed for _ {
+}
+
+impl Sealed for _ {
+}
+

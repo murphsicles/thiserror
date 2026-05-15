@@ -1,0 +1,10 @@
+[package]
+name = "@std/thiserror"
+version = "2.0.18"
+description = "Derive macro for error enums — #[derive(Error)] for Zeta"
+license = "MIT"
+repository = "https://github.com/murphsicles/thiserror"
+readme = "README.md"
+
+[fmt]
+style = "zeta-strict"

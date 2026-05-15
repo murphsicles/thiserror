@@ -1,0 +1,20 @@
+// Auto-converted from /tmp/df-thiserror-2.0.18/thiserror-2.0.18/src/provide.rs
+
+use core::error::{ Error, Request };
+pub trait ThiserrorProvide {
+ fn thiserror_provide<a>(&self, request: &mut Request<'a>)
+}
+
+impl<T> ThiserrorProvide for T where T: Error + Sized {
+ fn thiserror_provide(&self, request: &mut Request<'a>) {
+ self.provide(request);
+ }
+ 
+}
+
+pub trait Sealed {
+}
+
+impl<T: Error + Sized> Sealed for T {
+}
+

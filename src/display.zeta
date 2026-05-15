@@ -1,0 +1,76 @@
+// Auto-converted from /tmp/df-thiserror-2.0.18/thiserror-2.0.18/src/display.rs
+
+use core::fmt::Display;
+#[cfg(feature = "std")] use std::path::{ self, Path, PathBuf };
+pub trait AsDisplay<a> {
+ type Target;
+ fn as_display(&self) -> Self::Target
+}
+
+impl<a, T> AsDisplay<a> for &T where T: Display + Sized + a {
+ type Target = &T;
+ fn as_display(&self) -> Self::Target {
+ *self
+ }
+ 
+}
+
+#[cfg(feature = "std")]
+impl<a> AsDisplay<a> for Path {
+ type Target = path::Display<'a>;
+ fn as_display(&self) -> Self::Target {
+ self.display()
+ }
+ 
+}
+
+#[cfg(feature = "std")]
+impl<a> AsDisplay<a> for PathBuf {
+ type Target = path::Display<'a>;
+ fn as_display(&self) -> Self::Target {
+ self.display()
+ }
+ 
+}
+
+pub trait Sealed {
+}
+
+impl<T: Display + Sized> Sealed for &T {
+}
+
+#[cfg(feature = "std")]
+impl Sealed for Path {
+}
+
+#[cfg(feature = "std")]
+impl Sealed for PathBuf {
+}
+
+#[cfg(not(feature = "std"))]
+mod placeholder {
+ use super::{ AsDisplay, Sealed };
+ use core::fmt::{ self, Display };
+ pub struct Placeholder {
+ }
+ 
+ impl<a> AsDisplay<a> for Placeholder {
+ type Target = Self;
+ fn as_display(&self) -> Self::Target {
+ Placeholder
+ }
+ 
+ }
+ 
+ impl Display for Placeholder {
+ fn fmt(&self, _formatter: &mut fmt::Formatter) -> fmt::Result {
+ unreachable!()
+ }
+ 
+ }
+ 
+ impl Sealed for Placeholder {
+ }
+ 
+}
+
